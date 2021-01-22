@@ -1,24 +1,5 @@
-$(function() {
-  "use strict";
-  var root = $("body");
-  root.attr("id","page-top");
-	root.empty();
-	$("head").empty();
-	$("head").load("assets/header.html");
-	jQuery.ajaxSetup({ async: false }); //if order matters
-	$.get("assets/section-nav.html", '', function (data) { root.append(data); });
-	$.get("assets/section-intro.html", '', function (data) { root.append(data); });
-	// $.get("assets/section-service.html", '', function (data) { root.append(data); });
-	$.get("assets/section-portfolio.html", '', function (data) { root.append(data); });
-	// $.get("assets/section-testimonial.html", '', function (data) { root.append(data); });
-	// $.get("assets/section-blog.html", '', function (data) { root.append(data); });
-	$.get("assets/section-contact.html", '', function (data) { root.append(data); });
-	$.get("assets/section-footscript.html", '', function (data) { $("body").append(data); });
-	jQuery.ajaxSetup({ async: true });  //if order matters
-	preload();
-}); 
-
-function preload(){
+(function ($) {
+	"use strict";
 	var nav = $('nav');
   var navHeight = nav.outerHeight();
   
@@ -133,4 +114,4 @@ function preload(){
 		}
 	});
 
-}
+})(jQuery);
