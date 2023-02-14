@@ -5,7 +5,6 @@ import { ContentSection } from '../components/section/content-section';
 import { IntroHeader } from '../components/section/intro-header';
 
 export default function Main() {
-
   return (
     <Flex
       rounded={'md'}
