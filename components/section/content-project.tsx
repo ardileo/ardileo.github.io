@@ -15,7 +15,27 @@ export const ContentProject = () => {
         setSelectedDetail(item)
         onOpen()
     }
+    const boxBg = useColorModeValue('whiteAlpha.700', '#262d35');
+    const boxAfter = {
+        transition: 'all .3s ease',
+        content: '""',
+        w: 'full',
+        h: 'full',
+        pos: 'absolute',
+        top: 2,
+        left: 0,
+        backgroundColor: useColorModeValue('gray.300', 'gray.800'),
+        filter: 'blur(10px)',
+        zIndex: -1,
+    }
+    const boxHover = {
+        backgroundColor: useColorModeValue('#b0dff4', '#314556'),
+        filter: 'blur(20px)',
+    }
 
+    const iconButtonHover = {
+        bg: useColorModeValue('gray.200', 'gray.800'),
+    }
     return (
         <Box maxW='full' mt={55} mx={{ base: 0, md: '.75rem' }}>
             <SimpleGrid
@@ -23,12 +43,13 @@ export const ContentProject = () => {
                 spacingX={{ base: 3, md: 5 }}
                 spacingY={{ base: 65, md: 55 }} >
 
-                {datas.map(item => (
+                {datas.map((item, keyIdx) => (
                     <Box
+                        key={keyIdx}
                         role={'group'}
                         p={{ base: 3, md: 6 }}
                         w={'full'}
-                        bg={useColorModeValue('whiteAlpha.700', '#262d35')}
+                        bg={boxBg}
                         boxShadow={'lg'}
                         rounded={'lg'}
                         pos={'relative'}
@@ -40,28 +61,15 @@ export const ContentProject = () => {
                             pos={'relative'}
                             cursor="zoom-in"
                             onClick={() => handleDetailClick(item)}
-                            _after={{
-                                transition: 'all .3s ease',
-                                content: '""',
-                                w: 'full',
-                                h: 'full',
-                                pos: 'absolute',
-                                top: 2,
-                                left: 0,
-                                backgroundColor: useColorModeValue('gray.300', 'gray.800'),
-                                filter: 'blur(10px)',
-                                zIndex: -1,
-                            }}
+                            _after={boxAfter}
                             _groupHover={{
-                                _after: {
-                                    backgroundColor: useColorModeValue('#b0dff4', '#314556'),
-                                    filter: 'blur(20px)',
-                                },
+                                _after: { boxHover },
                             }}>
                             <Image
                                 rounded={'md'}
                                 width={'full'}
                                 objectFit={'cover'}
+                                alt={item.title}
                                 fallbackSrc='https://via.placeholder.com/480x320?text=Visit+Blogging.com+Now'
                                 src={item.thumbnail}
                             />
@@ -89,9 +97,7 @@ export const ContentProject = () => {
                                 aria-label='Search database'
                                 onClick={() => handleDetailClick(item)}
                                 rounded={20}
-                                _hover={{
-                                    bg: useColorModeValue('gray.200', 'gray.800'),
-                                }}
+                                _hover={iconButtonHover}
                                 icon={<SearchIcon />}
                             />
                         </Stack>
@@ -111,6 +117,7 @@ export const ContentProject = () => {
                 />
                 <ModalContent>
                     <Image
+                        alt={selectedDetail?.title}
                         width={'full'}
                         objectFit={'cover'}
                         fallbackSrc='https://via.placeholder.com/480x320?text=Visit+Blogging.com+Now'

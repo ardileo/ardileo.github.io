@@ -1,8 +1,8 @@
-import { Box, Card, CardBody, CardHeader, useColorModeValue, Heading, Spacer, Text, SimpleGrid, Flex, Avatar, IconButton, Stack, StackDivider, UnorderedList, ListItem, CardFooter, Button, Container, useColorMode, Wrap } from "@chakra-ui/react"
+import { Box, Card, CardBody, CardHeader, useColorModeValue, Heading, Text, SimpleGrid, Flex, Avatar, Stack, StackDivider, UnorderedList, ListItem, useColorMode } from "@chakra-ui/react"
 import Slider, { Settings } from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { ReactNode, useEffect, useState } from "react";
+
 import contentExperience from '../../data/experience.json';
 
 interface ContentSectionProps {
@@ -41,15 +41,15 @@ export const ContentExperience = ({ withDetail }: ContentSectionProps) => {
     const getImageByTheme = (companyPicture: { base: string; dark: string; }) => {
         return colorMode === "dark" ? companyPicture.dark : companyPicture.base;
     }
-
+    const cardBg = useColorModeValue('whiteAlpha.700', '#262d35');
     return (
         <SimpleGrid columns={1}>
             <Slider {...settings}>
-                {datas.map(item => (
-                    <Box p={4}>
+                {datas.map((item, keyIdx) => (
+                    <Box p={4} key={keyIdx}>
                         <Card p={{ base: 2, md: 4 }} size='sm'
                             boxShadow='lg' borderRadius='xl'
-                            bg={useColorModeValue('whiteAlpha.700', '#262d35')}>
+                            bg={cardBg}>
                             <CardHeader display={'flex'} >
                                 <Avatar mr={2} name={item.companyName} loading="lazy" src={getImageByTheme(item.companyPicture)} />
                                 <Flex flex={1} flexWrap='wrap' gap={{ base: 1, md: 2 }} direction={{ base: 'column', md: 'row' }}>
@@ -65,7 +65,7 @@ export const ContentExperience = ({ withDetail }: ContentSectionProps) => {
                                     <Box>
                                         <Heading size='xs' textTransform='uppercase'>Summary</Heading>
                                         <UnorderedList pt='2' fontSize='sm' mx={5}>
-                                            {item.jobSummary.map(sumDat => (<ListItem>{sumDat}</ListItem>))}
+                                            {item.jobSummary.map((sumDat, idx) => (<ListItem key={idx}>{sumDat}</ListItem>))}
                                         </UnorderedList>
                                     </Box>
                                     <Box>

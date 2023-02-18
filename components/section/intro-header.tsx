@@ -20,7 +20,7 @@ export function IntroHeader() {
         return () => {
             typed.destroy();
         };
-    }, [])
+    }, [data])
 
     return (
         <Box id='bodyHeader' mb={8} >
