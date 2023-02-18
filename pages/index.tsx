@@ -1,7 +1,5 @@
-import { Box, Container, Flex, Heading, Text, useColorModeValue } from '@chakra-ui/react';
+import { Flex } from '@chakra-ui/react';
 import Head from 'next/head';
-import path from 'path';
-import React, { ReactNode } from 'react';
 import { ContentExperience } from '../components/section/content-experience';
 import { ContentProject } from '../components/section/content-project';
 import { ContentSection } from '../components/section/content-section';
@@ -30,15 +28,4 @@ export default function Main({ data }: any) {
 
     </Flex>
   );
-}
-
-export async function getServerSideProps({ req, res }: any) {
-  res.setHeader(
-    'ngrok-skip-browser-warning',
-    'KOCCAKK'
-  );
-
-  return {
-    props: {},
-  }
 }

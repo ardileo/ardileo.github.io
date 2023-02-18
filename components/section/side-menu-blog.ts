@@ -1,4 +1,3 @@
-
 export default function SideMenuBlog() {
-    return ('ini menu ketika blog');
+  return "ini menu ketika blog";
 }
