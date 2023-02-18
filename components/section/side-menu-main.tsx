@@ -17,7 +17,7 @@ export default function SideMenuMain() {
         name: 'Ardi Leo',
         username: '@LeyoNaga',
         shortBio: 'Developer ∙ Open Sourcerer ∙ Tech Enthusiast',
-        avatar: './img/ardileo_github_io_profile_avatar.jpg',
+        avatar: './assets/img/ardileo_github_io_profile_avatar.jpg',
     }
     const socialMedia = [
         { 'id': 'linkedin', 'icon': <FaLinkedinIn />, 'url': 'https://www.linkedin.com/in/ardileo/' },

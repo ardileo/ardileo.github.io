@@ -1,0 +1,79 @@
+{
+    "data": [
+        {
+            "companyName": "PT OCBC NISP",
+            "companyAlias": null,
+            "companyPicture": {
+                "base": "https://www.ocbcnisp.com/asset/media/OCBC/Favicon/Android/favicon-96x96.png",
+                "dark": "https://www.ocbcnisp.com/asset/media/OCBC/Favicon/Android/favicon-96x96.png"
+            },
+            "activeDate": "Jun 2021 - Current",
+            "position": "IT Software Engineer",
+            "jobSummary": [
+                "Lorem ipsum dolor sit amet",
+                "Consectetur adipiscing elit",
+                "Integer molestie lorem at massa"
+            ],
+            "tools": [
+                {
+                    "title": "Angular",
+                    "icon": null
+                },
+                {
+                    "title": ".Net",
+                    "icon": null
+                }
+            ]
+        },
+        {
+            "companyName": "Hobiku Indonesia",
+            "companyAlias": "startup",
+            "companyPicture": {
+                "base": "https://lh6.googleusercontent.com/-zokbvW7sz5A/AAAAAAAAAAI/AAAAAAAAAAA/ICHJZ1hQ_sU/s120-p-k-no-ns-nd/photo.jpg",
+                "dark": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSN_hZpOQY57glTncP-5bE5Gt1Xgf22bzqDnXpd8_WmtB1eyZxG4lsBVEmtlHen6NycZcc&usqp=CAU"
+            },
+            "activeDate": "Feb 2016 - Mar 2019",
+            "position": "Full Stack Developer",
+            "jobSummary": [
+                "Lorem ipsum dolor sit amet",
+                "Consectetur adipiscing elit",
+                "Integer molestie lorem at massa"
+            ],
+            "tools": [
+                {
+                    "title": "Android",
+                    "icon": ""
+                },
+                {
+                    "title": "Laravel",
+                    "icon": ""
+                }
+            ]
+        },
+        {
+            "companyName": "PT OCBC NISP",
+            "companyAlias": null,
+            "companyPicture": {
+                "base": "https://www.ocbcnisp.com/asset/media/OCBC/Favicon/Android/favicon-96x96.png",
+                "dark": "https://www.ocbcnisp.com/asset/media/OCBC/Favicon/Android/favicon-96x96.png"
+            },
+            "activeDate": "Jun 2021 - Current",
+            "position": "IT Software Engineer",
+            "jobSummary": [
+                "Lorem ipsum dolor sit amet",
+                "Consectetur adipiscing elit",
+                "Integer molestie lorem at massa"
+            ],
+            "tools": [
+                {
+                    "title": "Angular",
+                    "icon": null
+                },
+                {
+                    "title": ".Net",
+                    "icon": null
+                }
+            ]
+        }
+    ]
+}

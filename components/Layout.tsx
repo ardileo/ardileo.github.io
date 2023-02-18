@@ -16,7 +16,6 @@ export default function Layout({ children, page }: any) {
                 bg={useColorModeValue('gray.100', 'gray.800')}
                 minH={{ base: '90vh', md: '100vh' }}>
                 {children}
-                {/* <Box height={1280}></Box> */}
             </Box>
             <Box w={{ base: 'full', md: '18rem', lg: '22rem' }}>
                 <Box
