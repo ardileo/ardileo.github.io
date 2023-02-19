@@ -25,36 +25,21 @@ export const ContentProject = () => {
   const [selectedDetail, setSelectedDetail] = useState<DataType>();
 
   const datas = contentProjects.data;
-  const handleDetailClick = (item: DataType) => {
+  const bgItemContainer = useColorModeValue("whiteAlpha.700", "#262d35");
+  const bgImageContainer = useColorModeValue("gray.400", "gray.800");
+  const bgImageContainerAfter = useColorModeValue("#b0dff4", "#314556");
+  const bgiconButtonHover = useColorModeValue("gray.200", "gray.800");
+
+  const openDialogModal = (item: any) => {
     setSelectedDetail(item);
     onOpen();
   };
-  const boxBg = useColorModeValue("whiteAlpha.700", "#262d35");
-  const boxAfter = {
-    transition: "all .3s ease",
-    content: '""',
-    w: "full",
-    h: "full",
-    pos: "absolute",
-    top: 2,
-    left: 0,
-    backgroundColor: useColorModeValue("gray.300", "gray.800"),
-    filter: "blur(10px)",
-    zIndex: -1,
-  };
-  const boxHover = {
-    backgroundColor: useColorModeValue("#b0dff4", "#314556"),
-    filter: "blur(20px)",
-  };
 
-  const iconButtonHover = {
-    bg: useColorModeValue("gray.200", "gray.800"),
-  };
   return (
     <Box maxW="full" mt={55} mx={{ base: 0, md: ".75rem" }}>
       <SimpleGrid
         columns={{ base: 2, sm: 2, md: 3 }}
-        spacingX={{ base: 3, md: 5 }}
+        spacingX={{ base: 3, md: 3 }}
         spacingY={{ base: 65, md: 55 }}
       >
         {datas.map((item, keyIdx) => (
@@ -63,22 +48,37 @@ export const ContentProject = () => {
             role={"group"}
             p={{ base: 3, md: 6 }}
             w={"full"}
-            bg={boxBg}
+            bg={bgItemContainer}
             boxShadow={"lg"}
             rounded={"lg"}
             pos={"relative"}
             zIndex={1}
           >
             <Box
+              id="image-container"
               animation="1s ease-out 0s 1 slideInFromBottom"
               rounded={"lg"}
               mt={-12}
               pos={"relative"}
               cursor="zoom-in"
-              onClick={() => handleDetailClick(item)}
-              _after={boxAfter}
+              onClick={() => openDialogModal(item)}
+              _after={{
+                transition: "all .3s ease",
+                content: '""',
+                w: "full",
+                h: "full",
+                pos: "absolute",
+                top: 2,
+                left: 0,
+                backgroundColor: bgImageContainer,
+                filter: "blur(10px)",
+                zIndex: -1,
+              }}
               _groupHover={{
-                _after: { boxHover },
+                _after: {
+                  backgroundColor: bgImageContainerAfter,
+                  filter: "blur(20px)",
+                },
               }}
             >
               <Image
@@ -122,9 +122,9 @@ export const ContentProject = () => {
                 variant={"ghost"}
                 w={{ base: "full", md: "unset" }}
                 aria-label="Search database"
-                onClick={() => handleDetailClick(item)}
+                onClick={() => openDialogModal(item)}
                 rounded={20}
-                _hover={iconButtonHover}
+                _hover={{ bg: bgiconButtonHover }}
                 icon={<SearchIcon />}
               />
             </Stack>

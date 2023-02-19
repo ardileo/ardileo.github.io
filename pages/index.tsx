@@ -18,7 +18,7 @@ export default function Main({ data }: any) {
       </Head>
       <IntroHeader />
       <ContentSection title="Experience">
-        <ContentExperience withDetail={false}></ContentExperience>
+        <ContentExperience withDetail={true}></ContentExperience>
       </ContentSection>
       <ContentSection title="Projects">
         <ContentProject />
