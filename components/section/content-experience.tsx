@@ -15,13 +15,16 @@ import {
   ListItem,
   useColorMode,
   useBreakpoint,
+  Grid,
+  useBreakpointValue,
 } from "@chakra-ui/react";
-import Slider, { Settings } from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+
 
 import contentExperience from "../../data/experience.json";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
+import { Swiper, SwiperProps, SwiperRef, SwiperSlide } from "swiper/react";
+import { Pagination, Navigation, EffectCreative, Controller } from "swiper";
+import { ContentSectionContext, IContentSectionContext } from "./content-section";
 
 interface ContentSectionProps {
   withDetail?: boolean;
@@ -31,69 +34,66 @@ interface ContentSectionProps {
 export const ContentExperience = ({ withDetail }: ContentSectionProps) => {
   const { colorMode } = useColorMode();
   const breakpoint = useBreakpoint({ ssr: true });
-  const [width, setWidth] = useState(0);
-  useEffect(() => {
-    setWidth(window.innerWidth);
-    const handleResize = () => setWidth(window.innerWidth);
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  const convert = (em: number) => {
-    return em / 0.0625;
-  };
-  const getBreakPont = (p: string) => {
-    switch (p) {
-      case "2xl":
-        return convert(96);
-      case "xl":
-        return convert(80);
-      case "lg":
-        return convert(62);
-      case "md":
-        return convert(48);
-      case "sm":
-      case "xs":
-      default:
-        return convert(30);
-    }
-  };
-  const settings: Settings = {
-    dots: true,
-    rows: 1,
-    infinite: false,
-    adaptiveHeight: true,
-    initialSlide: 0,
-    slidesToShow: 2,
-    waitForAnimate: true,
-    responsive: [
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-        },
-      },
-    ],
-  };
+  const swiperRef = useRef<SwiperRef>();
+  const parentContext = useContext<IContentSectionContext>(ContentSectionContext);
 
   const cardBg = useColorModeValue("whiteAlpha.700", "#262d35");
+
   const datas = contentExperience.data;
   const getImageByTheme = (companyPicture: { base: string; dark: string }) => {
     return colorMode === "dark" ? companyPicture.dark : companyPicture.base;
   };
+
+  useEffect(() => {
+    parentContext.elementTitle.current.style.position = 'relative'
+    parentContext.elementTitle.current.style.zIndex = '9999999'
+  }, [parentContext])
+
+  const swiperProps: SwiperProps = {
+    spaceBetween: 15,
+    grabCursor: true,
+    navigation: true,
+    autoHeight: true,
+    breakpoints: {
+      320: {
+        slidesPerView: 1,
+      },
+      1024: {
+        slidesPerView: 2,
+      },
+      2000: {
+        slidesPerView: 3,
+      },
+    },
+    pagination: { clickable: true, },
+    modules: [Pagination, Navigation],
+  }
+
   return (
-    <SimpleGrid columns={1} m={4}>
-      <Slider {...settings}>
-        {datas.map((item, keyIdx) => (
-          <Box p={2} key={keyIdx}>
+    <Box maxW="full" mt={25}  >
+      <Swiper
+        {...swiperProps}
+        ref={swiperRef as any}
+        style={{
+          overflow: "unset",
+          zIndex: 'auto',
+          padding: useBreakpointValue(
+            {
+              base: '0 12px',
+              sm: '0 17px',
+            },
+          )
+        }}
+      >
+
+        {datas.map((item, idx) => (
+          <SwiperSlide key={idx} >
             <Card
               p={{ base: 2, md: 4 }}
               size="sm"
-              boxShadow="lg"
+              boxShadow="xl"
               borderRadius="xl"
-              transition=".25s"
+              transition=".25s ease"
               bg={cardBg}
               _hover={{
                 transform: "translateY(-3px)",
@@ -118,7 +118,6 @@ export const ContentExperience = ({ withDetail }: ContentSectionProps) => {
                       textTransform="uppercase"
                       letterSpacing={1}
                     >
-                      {" "}
                       {item.companyName}{" "}
                     </Heading>
                     <Text fontSize={{ base: "xs", md: "unset" }}>
@@ -142,20 +141,28 @@ export const ContentExperience = ({ withDetail }: ContentSectionProps) => {
                       ))}
                     </UnorderedList>
                   </Box>
-                  <Box>
-                    <Heading size="xs" textTransform="uppercase">
-                      Tools
-                    </Heading>
-                    <Text pt="2" fontSize="sm">
-                      {item.tools.map((el) => el.title).join(", ")}
-                    </Text>
-                  </Box>
                 </Stack>
               </CardBody>
             </Card>
-          </Box>
+          </SwiperSlide>
         ))}
-      </Slider>
-    </SimpleGrid>
-  );
-};
+
+      </Swiper>
+
+      {swiperRef &&
+        <Box
+          // bg={'red'}
+          // eslint-disable-next-line react-hooks/rules-of-hooks
+          bg={useColorModeValue("gray.100", "gray.800")}
+          className="sliderNavMask"
+          height={(swiperRef.current?.swiper.wrapperEl.offsetHeight || 0) + 80}
+          marginTop={('-' + (swiperRef.current?.swiper.wrapperEl.offsetHeight || 0) * 2 / 1.7)}
+          marginLeft={'-3rem'}
+          marginRight={'-2.5rem'}
+          marginBottom={-10}
+          transition="background .75s ease"
+        />
+      }
+    </Box >
+  )
+}

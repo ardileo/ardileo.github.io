@@ -1,0 +1,44 @@
+:root {
+  --swiper-pagination-bottom: -2rem;
+  --swiper-navigation-sides-offset: -1.5rem;
+  --swiper-navigation-size: 36px;
+  --swiper-navigation-color: #4299e1;
+  /* --swiper-navigation-color: red; */
+}
+
+@media screen and (max-width: 420px) {
+  :root {
+    --swiper-navigation-sides-offset: -1rem;
+    --swiper-navigation-size: 22px;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  :root {
+    --swiper-navigation-sides-offset: -1rem;
+    --swiper-navigation-size: 22px;
+  }
+}
+
+[data-theme="dark"]:root {
+  /* --swiper-navigation-color: #4299e1; */
+}
+
+.sliderNavMask {
+  position: relative;
+  pointer-events: none;
+  z-index: 9;
+  mask-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 1) 2.5%,
+    rgba(255, 255, 255, 0) 6%,
+    rgba(255, 255, 255, 0) 94%,
+    rgba(255, 255, 255, 1) 97.5%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}
+
+.swiper-pagination-bullet.swiper-pagination-bullet-active {
+  --swiper-pagination-color: #4299e1;
+}

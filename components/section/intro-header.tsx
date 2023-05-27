@@ -1,10 +1,11 @@
 import { Box, Heading } from "@chakra-ui/react";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import Typed from "typed.js";
-import contentProfile from "../../data/profile.json";
+import { MyAppContext } from "../../utils/context";
 
 export function IntroHeader() {
-  const data = contentProfile.data.meta;
+  const contextData = useContext(MyAppContext)
+  const data = contextData.meta;
   useEffect(() => {
     const typed = new Typed(".text-slider", {
       strings: data.subtitle.split(","),
@@ -26,8 +27,9 @@ export function IntroHeader() {
         mb={3}
         fontWeight={"normal"}
       >
-        Hi!, I&apos;m <b>{data.name} </b>👋
+        Hi, I&apos;m <b>{data.name} </b><span className="handWave">👋</span>
       </Heading>
+
       <Heading
         textAlign={{ base: "center", md: "unset" }}
         fontSize={"xl"}
@@ -37,6 +39,7 @@ export function IntroHeader() {
       >
         <span className="text-slider"></span>
       </Heading>
+
     </Box>
   );
 }

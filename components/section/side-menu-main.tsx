@@ -11,10 +11,14 @@ import {
   useColorModeValue,
   IconButton,
 } from "@chakra-ui/react";
+import { useContext } from "react";
+import { MyAppContext } from "../../utils/context";
 
 export default function SideMenuMain() {
+  const { meta } = useContext(MyAppContext)
+
   const profileKu = {
-    name: "Ardi Leo",
+    name: meta?.name || '',
     username: "@LeyoNaga",
     shortBio: "Developer ∙ Open Sourcerer ∙ Tech Enthusiast",
     avatar: "./assets/img/ardileo_github_io_profile_avatar.jpg",
@@ -49,7 +53,6 @@ export default function SideMenuMain() {
           color={useColorModeValue("gray.700", "gray.400")}
           px={3}
         >
-          {" "}
           {profileKu.shortBio}
         </Text>
       </Stack>

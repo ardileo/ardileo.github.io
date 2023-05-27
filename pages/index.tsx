@@ -4,8 +4,12 @@ import { ContentExperience } from '../components/section/content-experience';
 import { ContentProject } from '../components/section/content-project';
 import { ContentSection } from '../components/section/content-section';
 import { IntroHeader } from '../components/section/intro-header';
+import { useContext } from 'react';
+import { MyAppContext } from '../utils/context';
 
 export default function Main({ data }: any) {
+  const { meta } = useContext(MyAppContext)
+
   return (
     <Flex
       rounded={'md'}
@@ -13,8 +17,8 @@ export default function Main({ data }: any) {
       direction={'column'}
     >
       <Head>
-        <title>Ardi Leo</title>
-        {/* <meta property="og:title" content="My page title" key="title" /> */}
+        <title>{meta.name}</title>
+        <meta property="og:title" content={meta.name} key="title" />
       </Head>
       <IntroHeader />
       <ContentSection title="Experience">

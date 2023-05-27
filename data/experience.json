@@ -13,16 +13,6 @@
         "Lorem ipsum dolor sit amet",
         "Consectetur adipiscing elit",
         "Integer molestie lorem at massa"
-      ],
-      "tools": [
-        {
-          "title": "Angular",
-          "icon": null
-        },
-        {
-          "title": ".Net",
-          "icon": null
-        }
       ]
     },
     {
@@ -39,7 +29,7 @@
         "Consectetur adipiscing elit",
         "Integer molestie lorem at massa"
       ],
-      "tools": [
+      "_tools": [
         {
           "title": "Android",
           "icon": ""
@@ -63,16 +53,6 @@
         "Lorem ipsum dolor sit amet",
         "Consectetur adipiscing elit",
         "Integer molestie lorem at massa"
-      ],
-      "tools": [
-        {
-          "title": "Angular",
-          "icon": null
-        },
-        {
-          "title": ".Net",
-          "icon": null
-        }
       ]
     }
   ]

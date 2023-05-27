@@ -1,29 +1,44 @@
 @keyframes slideInFromBottom {
-    from {
-        transform: translateY(20px);
-        opacity: 0;
-    }
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
 
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
-.slick-slider {
-    /* width: calc(100% + 5rem) !important; */
-    margin-left: -1.5rem;
-    margin-right: -1.5rem;
+@keyframes handWaveAnimation {
+  0% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(14deg);
+  }
+  20% {
+    transform: rotate(-8deg);
+  }
+  30% {
+    transform: rotate(14deg);
+  }
+  40% {
+    transform: rotate(-4deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  60% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
 }
 
-.slick-slider .slick-arrow {
-    z-index: 999;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    height: 100%;
-}
-
-.slick-slider .slick-list {
-    -webkit-mask-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 2%, rgba(255, 255, 255, 1) 98%, rgba(255, 255, 255, 0) 100%);
-    mask-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 2%, rgba(255, 255, 255, 1) 98%, rgba(255, 255, 255, 0) 100%);
+.handWave {
+  animation: 2.5s infinite handWaveAnimation;
+  display: inline-block;
+  transform-origin: 70% 70%;
 }
