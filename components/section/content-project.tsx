@@ -17,7 +17,7 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { useState } from "react";
-import contentProjects from "../../data/project.json";
+import contentProjects from "../../data/_project.json";
 type DataType = typeof contentProjects.data[0];
 
 export const ContentProject = () => {
@@ -42,7 +42,7 @@ export const ContentProject = () => {
         spacingX={{ base: 3, md: 3 }}
         spacingY={{ base: 65, md: 55 }}
       >
-        {datas.map((item, keyIdx) => (
+        {datas.map((item: any, keyIdx: any) => (
           <Box
             key={keyIdx}
             role={"group"}

@@ -42,3 +42,11 @@
   display: inline-block;
   transform-origin: 70% 70%;
 }
+
+.nav-sidebar-hide {
+  width: 0px !important;
+}
+
+.nav-sidebar-hide > div {
+  width: auto;
+}

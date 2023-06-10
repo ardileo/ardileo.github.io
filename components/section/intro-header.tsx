@@ -1,10 +1,10 @@
 import { Box, Heading } from "@chakra-ui/react";
 import { useContext, useEffect } from "react";
 import Typed from "typed.js";
-import { MyAppContext } from "../../utils/context";
+import { MainContext } from "../../utils/context/main-context";
 
 export function IntroHeader() {
-  const contextData = useContext(MyAppContext)
+  const contextData = useContext(MainContext)
   const data = contextData.meta;
   useEffect(() => {
     const typed = new Typed(".text-slider", {

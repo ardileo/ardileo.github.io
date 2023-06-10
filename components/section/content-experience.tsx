@@ -155,11 +155,11 @@ export const ContentExperience = ({ withDetail }: ContentSectionProps) => {
           // eslint-disable-next-line react-hooks/rules-of-hooks
           bg={useColorModeValue("gray.100", "gray.800")}
           className="sliderNavMask"
-          height={(swiperRef.current?.swiper.wrapperEl.offsetHeight || 0) + 80}
-          marginTop={('-' + (swiperRef.current?.swiper.wrapperEl.offsetHeight || 0) * 2 / 1.7)}
+          height={(swiperRef.current?.swiper.wrapperEl.offsetHeight || 0) + 120}
+          marginTop={('-' + (swiperRef.current?.swiper.wrapperEl.offsetHeight || 0) * 2 / 1.3)}
           marginLeft={'-3rem'}
           marginRight={'-2.5rem'}
-          marginBottom={-10}
+          marginBottom={-15}
           transition="background .75s ease"
         />
       }

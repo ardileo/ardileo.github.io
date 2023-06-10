@@ -12,10 +12,10 @@ import {
   IconButton,
 } from "@chakra-ui/react";
 import { useContext } from "react";
-import { MyAppContext } from "../../utils/context";
+import { MainContext } from "../../utils/context/main-context";
 
 export default function SideMenuMain() {
-  const { meta } = useContext(MyAppContext)
+  const { meta } = useContext(MainContext)
 
   const profileKu = {
     name: meta?.name || '',
